@@ -109,10 +109,7 @@ namespace Swashbuckle.AspNetCore.SwaggerGen
                 var httpMethod = group.Key;
 
                 if (httpMethod == null)
-                    throw new SwaggerGeneratorException(string.Format(
-                        "Ambiguous HTTP method for action - {0}. " +
-                        "Actions require an explicit HttpMethod binding for Swagger/OpenAPI 3.0",
-                        group.First().ActionDescriptor.DisplayName));
+                    httpMethod = "GET";
 
                 if (group.Count() > 1 && _options.ConflictingActionsResolver == null)
                     throw new SwaggerGeneratorException(string.Format(
